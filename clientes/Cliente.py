@@ -1,11 +1,11 @@
 class Cliente:
 
-    def __init__(self, nome = None, sexo = None, data_nascimento = None):
-        self.nome = nome
-        self.sexo = sexo
-        self.data_nascimento = data_nascimento
+    def __init__(self):
+        self._pais = None
+        self._estado = None
+        self._cidade = None
+        self._endereco = None
+        self._dt_cadastro = None
 
-    def cadastrar_cliente(self, nome, sexo, data_nascimento):
-        self.nome = nome
-        self.sexo = sexo
-        self.data_nascimento = data_nascimento
+    def cadastrar_cliente(self):
+        pass
