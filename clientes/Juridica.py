@@ -12,3 +12,11 @@ class Juridica(Cliente):
         self._estado = estado
         self._cidade = cidade
         self._dt_cadastro = dt_cadastro
+
+    @property
+    def razao_social(self):
+        return self.__razao_social
+
+    @property
+    def cnpj(self):
+        return self.__cnpj

@@ -14,3 +14,10 @@ class Fisica(Cliente):
         self._dt_cadastro = dt_cadastro
 
 
+    @property
+    def nome(self):
+        return self.__nome
+
+    @property
+    def cpf(self):
+        return self.__cpf

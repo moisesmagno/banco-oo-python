@@ -18,9 +18,55 @@ while(tipo_resposta == False):
 
 #Instanciado as classes correspondentes e solicitandos os dados necessários de acordo ao tipo do cliente informado.
 if(tipo_cliente == 'F'):
+
+    #Cadastrando o cliente
+    nome = input("Nome do cliente: ")
+    cpf = int(input("CPF: "))
+    estado = input("Estado: ")
+    cidade = input("Cidades: ")
+    data = input("Data atual: ")
+
     cliente_fisico = Fisica()
-    cliente_fisico.cadastrar_cliente('Moisés', 23239754800, 'SP', 'São Paulo', '14/08/2018')
+    cliente_fisico.cadastrar_cliente(nome, cpf, estado, cidade, data)
+
+    #Criando conta
+    agencia = int(input('Agencia: '))
+    conta = int(input('Conta: '))
+    tipo_conta = input('Tipo de conta Corrente(c) - Pupança(p): ').upper()
+    id_cliente = cliente_fisico.cpf
+    senha = input('Senha: ')
+    saldo = float(input('Saldo: '))
+
+    if(tipo_conta == 'C'):
+        conta = Corrente()
+    else:
+        conta = Poupanca()
+
+    conta.criar_conta(agencia, conta, tipo_conta, id_cliente, senha, saldo)
+
 else:
+
+    #Cadastrando a empresa
+    razao_social = input("Razão social: ")
+    cnpj = int(input("CNPJ: "))
+    estado = input("Estado: ")
+    cidade = input("Cidades: ")
+    data = input("Data atual: ")
+
     cliente_juridico = Juridica()
-    cliente_juridico.cadastrar_cliente('Nublei LTDA', 123434324240001, 'SP', 'São Paulo', '14/08/2018')
+    cliente_juridico.cadastrar_cliente(razao_social, cnpj, estado, cidade, data)
+
+    # Criando conta
+    agencia = int(input('Agencia: '))
+    conta = int(input('Conta: '))
+    tipo_conta = input('Tipo de conta Corrente(c) - Pupança(p): ').upper()
+    id_cliente = cliente_juridico.cnpj
+    senha = input('Senha: ')
+
+    if (tipo_conta == 'C'):
+        conta = Corrente()
+    else:
+        conta = Poupanca()
+
+    conta.criar_conta(agencia, conta, tipo_conta, id_cliente, senha)
 

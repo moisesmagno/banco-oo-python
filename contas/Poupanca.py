@@ -3,18 +3,16 @@ from contas.Conta import Conta
 class Poupanca(Conta):
 
     def __init__(self):
-        self.__taxa = None
+        self.__juros = None
 
-    def criar_conta(self, agencia, conta, saldo, tipo_conta, id_cliente, senha):
-        self._agencia = agencia
-        self._conta = conta
-        self._saldo = saldo
-        self._tipo_conta = tipo_conta
-        self._id_cliente = id_cliente
-        self._senha = senha
+    @juros_rendimentos.setter
+    def juros_rendimentos(self, juros):
+        self.__juros = juros
 
-    def taxa_rendimentos(self, taxa):
-        self.__taxa = taxa
+    @property
+    def juros_rendimentos(self):
+        return self.__juros
 
+    @property
     def rendimento(self):
-        return self._juros * self._saldo
+        return self.__juros * self._saldo
