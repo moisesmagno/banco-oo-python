@@ -2,21 +2,25 @@
 class Conta:
 
     def __init__(self):
-        self._conta = None
-        self._agencia = None
-        self._senha = None
+        self.__agencia = None
+        self.__conta = None
+        self.__senha = None
         self._saldo = 0.0
-        self._id_cliente = None
-        self._tipo_corrente = False
-        self._tipo_poupanca = False
+        self.__id_cliente = None
+        self.__tipo_corrente = None
 
-    def _criar_conta(self):
+    def criar_conta(self, agencia, conta, tipo_conta, id_cliente, senha, saldo):
+        self.__agencia = agencia
+        self.__conta = conta
+        self.__senha = senha
+        self._saldo = saldo
+        self.__id_cliente = id_cliente
+        self.__tipo_conta = tipo_conta
+
+    def depositar(self):
         pass
 
-    def _depositar(self):
-        pass
-
-    def _sacar(self):
+    def sacar(self):
         pass
 
 
