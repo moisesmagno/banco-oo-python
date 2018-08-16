@@ -17,10 +17,10 @@ class Conta:
         self.__id_cliente = id_cliente
         self.__tipo_conta = tipo_conta
 
-    def _depositar(self):
+    def depositar(self):
         pass
 
-    def _sacar(self):
+    def sacar(self):
         pass
 
 

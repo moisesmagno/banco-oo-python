@@ -2,13 +2,13 @@ from contas.Conta import Conta
 
 class Corrente(Conta):
 
-    def __init__(self):
+    def __init__(self,):
         self.__taxa_manutencao = None
 
     @taxa_manutencao.setter
-    def taxa_manutencao(self, taxa_manutencao):
-        self.__taxa_manutencao = taxa_manutencao
+    def taxa_manutencao(self, taxa):
+        self.__taxa_manutencao = taxa
 
     @property
-    def taxa_manutencao(self):
+    def tx_manutencao(self):
         return self.__taxa_manutencao

@@ -26,23 +26,23 @@ if(tipo_cliente == 'F'):
     cidade = input("Cidades: ")
     data = input("Data atual: ")
 
-    cliente_fisico = Fisica()
-    cliente_fisico.cadastrar_cliente(nome, cpf, estado, cidade, data)
+    cliente = Fisica()
+    cliente.cadastrar_cliente(nome, cpf, estado, cidade, data)
 
     #Criando conta
-    agencia = int(input('Agencia: '))
-    conta = int(input('Conta: '))
-    tipo_conta = input('Tipo de conta Corrente(c) - Pupança(p): ').upper()
-    id_cliente = cliente_fisico.cpf
-    senha = input('Senha: ')
-    saldo = float(input('Saldo: '))
-
-    if(tipo_conta == 'C'):
-        conta = Corrente()
-    else:
-        conta = Poupanca()
-
-    conta.criar_conta(agencia, conta, tipo_conta, id_cliente, senha, saldo)
+    # agencia = int(input('Agencia: '))
+    # conta = int(input('Conta: '))
+    # tipo_conta = input('Tipo de conta Corrente(c) - Pupança(p): ').upper()
+    # id_cliente = cliente_fisico.cpf
+    # senha = input('Senha: ')
+    # saldo = float(input('Saldo: '))
+    #
+    # if(tipo_conta == 'C'):
+    #     conta = Corrente()
+    # else:
+    #     conta = Poupanca()
+    #
+    # conta.criar_conta(agencia, conta, tipo_conta, id_cliente, senha, saldo)
 
 else:
 
@@ -53,20 +53,41 @@ else:
     cidade = input("Cidades: ")
     data = input("Data atual: ")
 
-    cliente_juridico = Juridica()
-    cliente_juridico.cadastrar_cliente(razao_social, cnpj, estado, cidade, data)
+    cliente = Juridica()
+    cliente.cadastrar_cliente(razao_social, cnpj, estado, cidade, data)
 
-    # Criando conta
-    agencia = int(input('Agencia: '))
-    conta = int(input('Conta: '))
-    tipo_conta = input('Tipo de conta Corrente(c) - Pupança(p): ').upper()
-    id_cliente = cliente_juridico.cnpj
-    senha = input('Senha: ')
+# Criando conta
+agencia = int(input('Agencia: '))
+numero_conta = int(input('Conta: '))
+tipo_conta = input('Tipo de conta Corrente(c) - Pupança(p): ').upper()
+id_cliente = cliente.cnpj if tipo_cliente == 'J' else cliente.cnpj
+senha = input('Senha: ')
+saldo_inicial = float(input('Valor do depósito inicial: '))
 
-    if (tipo_conta == 'C'):
-        conta = Corrente()
-    else:
-        conta = Poupanca()
+if (tipo_conta == 'C'):
+    conta = Corrente()
+    conta.criar_conta(agencia, numero_conta, tipo_conta, id_cliente, senha)
+    conta.taxa_manutencao = 23.00
+    conta.depositar(saldo_inicial)
+else:
+    conta = Poupanca()
+    conta.criar_conta(agencia, numero_conta, tipo_conta, id_cliente, senha)
+    conta.juros_rendimentos = 0.07
+    conta.depositar(saldo_inicial)
 
-    conta.criar_conta(agencia, conta, tipo_conta, id_cliente, senha)
+#Exibindo dados da conta e que foram guardados nos atributos.
+if (tipo_cliente == 'F'):
+    print('Nombe: {0} \n '
+          'CPF: {1} \n '
+          'Estado: {2} \n'
+          'Cidade: {3} \n'
+          'Data de Cadastro: {4}'.format(cliente.nome, cliente.cpf, cliente.estado, cliente.cidade, cliente.dt_cadastro))
+else:
+    print('Razão Social: {0} \n '
+          'CNPJ: {1} \n '
+          'Estado: {2} \n'
+          'Cidade: {3} \n'
+          'Data de Cadastro: {4}'.format(cliente.razao_social, cliente.cnpj, cliente.estado, cliente.cidade, cliente.dt_cadastro))
 
+# if(tipo_conta == 'C')
+# else:
