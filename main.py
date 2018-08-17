@@ -74,5 +74,7 @@ else:
           'Cidade: {3} \n'
           'Data de Cadastro: {4}'.format(cliente.razao_social, cliente.cnpj, cliente.estado, cliente.cidade, cliente.dt_cadastro))
 
-# if(tipo_conta == 'C')
+# if(tipo_conta == 'C'):
+#     print(''.format())
 # else:
+#     print(''.format())
