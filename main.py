@@ -21,9 +21,9 @@ if(tipo_cliente == 'F'):
 
     #Cadastrando o cliente
     nome = input("Nome do cliente: ")
-    cpf = int(input("CPF: "))
+    cpf = int(input("CPF - Somente números: "))
     estado = input("Estado: ")
-    cidade = input("Cidades: ")
+    cidade = input("Cidade: ")
     data = input("Data atual: ")
 
     cliente = Fisica()
@@ -45,36 +45,44 @@ else:
 agencia = int(input('Agencia: '))
 numero_conta = int(input('Conta: '))
 tipo_conta = input('Tipo de conta Corrente(c) - Pupança(p): ').upper()
-id_cliente = cliente.cnpj if tipo_cliente == 'J' else cliente.cnpj
+id_cliente = cliente.cnpj if tipo_cliente == 'J' else cliente.cpf
 senha = input('Senha: ')
 saldo_inicial = float(input('Valor do depósito inicial: '))
 
 if (tipo_conta == 'C'):
     conta = Corrente()
-    conta.criar_conta(agencia, numero_conta, tipo_conta, id_cliente, senha)
+    conta.criar_conta(agencia, numero_conta, tipo_conta, id_cliente, senha, saldo_inicial)
     conta.taxa_manutencao = 23.00
     conta.depositar(saldo_inicial)
 else:
     conta = Poupanca()
-    conta.criar_conta(agencia, numero_conta, tipo_conta, id_cliente, senha)
+    conta.criar_conta(agencia, numero_conta, tipo_conta, id_cliente, senha, saldo_inicial)
     conta.juros_rendimentos = 0.07
     conta.depositar(saldo_inicial)
 
 #Exibindo dados da conta e que foram guardados nos atributos.
+print('DADOS DO CLIENTE:')
 if (tipo_cliente == 'F'):
-    print('Nombe: {0} \n '
-          'CPF: {1} \n '
+    print('Nombe: {0} \n'
+          'CPF: {1} \n'
           'Estado: {2} \n'
           'Cidade: {3} \n'
           'Data de Cadastro: {4}'.format(cliente.nome, cliente.cpf, cliente.estado, cliente.cidade, cliente.dt_cadastro))
 else:
-    print('Razão Social: {0} \n '
-          'CNPJ: {1} \n '
+    print('Razão Social: {0} \n'
+          'CNPJ: {1} \n'
           'Estado: {2} \n'
           'Cidade: {3} \n'
           'Data de Cadastro: {4}'.format(cliente.razao_social, cliente.cnpj, cliente.estado, cliente.cidade, cliente.dt_cadastro))
 
-# if(tipo_conta == 'C'):
-#     print(''.format())
-# else:
-#     print(''.format())
+print('DADOS DA CONTA:')
+print('Agencia: {0} \n'
+      'Conta: {1} \n'
+      'Saldo: {2} \n'
+      'Tipo de conta: {3} \n'.format(conta.agencia, conta.conta, conta.saldo, conta.tipo_conta))
+
+if(tipo_conta == 'C'):
+    print('Taxa de manuntenção: {0} \n'.format(conta.taxa_manutencao))
+else:
+    print('Juros de rendimentos: {0} \n'
+          'Total de rendimentos: {1} \n'.format(conta.juros_rendimentos, conta.rendimento))

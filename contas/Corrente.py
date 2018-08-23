@@ -13,3 +13,5 @@ class Corrente(Conta):
     def taxa_manutencao(self, taxa):
         self.__taxa_manutencao = taxa
 
+    def depositar(self, saldo):
+        self._saldo = saldo

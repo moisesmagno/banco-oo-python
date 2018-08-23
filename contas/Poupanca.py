@@ -16,3 +16,6 @@ class Poupanca(Conta):
     @property
     def rendimento(self):
         return self.__juros * self._saldo
+
+    def depositar(self, saldo):
+        self._saldo = saldo

@@ -20,4 +20,4 @@ class Fisica(Cliente):
 
     @property
     def cpf(self):
-        return self.__cpf
+        return self.__cfp
